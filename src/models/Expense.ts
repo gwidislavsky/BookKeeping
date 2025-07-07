@@ -3,8 +3,9 @@ import mongoose, { Schema, Document } from "mongoose";
 export interface IExpense extends Document {
   referenceNumber: number;
   date: Date;
-  supplier: string; // אפשר להחליף ל-ObjectId אם יש מודל ספק
-  category: string; // אפשר להחליף ל-ObjectId אם יש מודל קטגוריה
+  supplier: mongoose.Types.ObjectId;
+  category: mongoose.Types.ObjectId;
+  user: mongoose.Types.ObjectId;
   amount: number;
   vat: number;
   paymentMethod: "cash" | "credit" | "check" | "bank_transfer";
@@ -24,8 +25,9 @@ export interface IExpense extends Document {
 const ExpenseSchema: Schema = new Schema({
   referenceNumber: { type: Number, required: true, unique: true },
   date: { type: Date, required: true },
-  supplier: { type: String, required: true },
-  category: { type: String, required: true },
+  supplier: { type: Schema.Types.ObjectId, ref: "Supplier", required: true },
+  category: { type: Schema.Types.ObjectId, ref: "Category", required: true },
+  user: { type: Schema.Types.ObjectId, ref: "User" }, // אופציונלי
   amount: { type: Number, required: true },
   vat: { type: Number, required: true },
   paymentMethod: { type: String, enum: ["cash", "credit", "check", "bank_transfer"], required: true },
