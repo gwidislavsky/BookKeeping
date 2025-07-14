@@ -10,9 +10,15 @@ import {
 const router = express.Router();
 
 router.get('/', getAllSuppliers);
-router.get('/:id', getSupplierById);
-router.post('/', createSupplier);
-router.put('/:id', updateSupplier);
-router.delete('/:id', deleteSupplier);
+router.post('/',createSupplier);
+router.get('/:id', (req, res) => {
+  getSupplierById(req, res);
+});
+router.put('/:id', (req, res) => {
+  updateSupplier(req, res);
+});
+router.delete('/:id', (req, res) => {
+  deleteSupplier(req, res);
+});
 
 export default router;

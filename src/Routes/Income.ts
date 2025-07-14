@@ -10,9 +10,15 @@ import {
 const router = express.Router();
 
 router.get('/', getAllIncomes);
-router.get('/:id', getIncomeById);
 router.post('/', createIncome);
-router.put('/:id', updateIncome);
-router.delete('/:id', deleteIncome);
+router.get('/:id', (req, res) => {
+  getIncomeById(req, res);
+});
+router.put('/:id', (req, res) => {
+  updateIncome(req, res);
+});
+router.delete('/:id', (req, res) => {
+  deleteIncome(req, res);
+});
 
 export default router;

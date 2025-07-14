@@ -10,9 +10,15 @@ import {
 const router = express.Router();
 
 router.get('/', getAllExpenses);
-router.get('/:id', getExpenseById);
 router.post('/', createExpense);
-router.put('/:id', updateExpense);
-router.delete('/:id', deleteExpense);
+router.get('/:id', (req, res) => {
+  getExpenseById(req, res);
+});
+router.put('/:id', (req, res) => {
+  updateExpense(req, res);
+});
+router.delete('/:id', (req, res) => {
+  deleteExpense(req, res);
+});
 
 export default router;

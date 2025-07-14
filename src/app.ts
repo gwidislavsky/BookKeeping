@@ -7,18 +7,24 @@ import supplierRoutes from './Routes/Supplier';
 import categoryRoutes from './Routes/Category';
 import incomeRoutes from './Routes/Income';
 import expenseRoutes from './Routes/Expense';
+import uploadRouter from './Routes/Upload';
+import receiptRouter from './Routes/Receipt';
+import reportRouter from './Routes/Report';
 
 dotenv.config();
 const app = express();
 app.use(express.json());
 
 // חיבור כל ה־routers ל־API
+app.use('/api/upload', uploadRouter);
+app.use('/api/receipts', receiptRouter);
 app.use('/api/users', userRoutes);
 app.use('/api/clients', clientRoutes);
 app.use('/api/suppliers', supplierRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/incomes', incomeRoutes);
 app.use('/api/expenses', expenseRoutes);
+app.use('/api/reports', reportRouter);
 
 // חיבור למסד הנתונים
 mongoose.connect(process.env.MONGO_URI!)
