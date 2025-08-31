@@ -11,10 +11,10 @@ export interface IClient extends Document {
 
 const ClientSchema: Schema = new Schema({
   name: { type: String, required: true },
-  phone: String,
-  email: String,
-  address: String,
-  companyId: String,
+  phone: { type: String },
+  email: { type: String },
+  address: { type: String },
+  companyId: { type: String },
   type: { type: String, enum: ["business", "private"] },
 });
 

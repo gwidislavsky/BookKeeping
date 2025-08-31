@@ -10,7 +10,8 @@ import expenseRoutes from './Routes/Expense';
 import uploadRouter from './Routes/Upload';
 import receiptRouter from './Routes/Receipt';
 import reportRouter from './Routes/Report';
-
+import { connectDB } from './config/db';
+connectDB();
 dotenv.config();
 const app = express();
 app.use(express.json());

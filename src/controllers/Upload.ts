@@ -33,11 +33,14 @@ export const uploadFile = async (req: Request, res: Response, next: NextFunction
     });
 
     // הכנסת נתונים למסד הנתונים (הכנסה)
-    const income = new Income({
-      amount,
-      client,
-      date: new Date() // אפשר להוציא תאריך מה-PDF אם יש
-    });
+const income = new Income({
+  amount,
+  client,
+  date: new Date(),
+  vat: req.body.vat,
+  paymentMethod: req.body.paymentMethod,
+  receiptNumber: req.body.receiptNumber
+});
     await income.save();
 
     // דוגמה: חיפוש שורות עם "סה\"כ"
