@@ -6,6 +6,7 @@ export interface ICategory extends Document {
 }
 
 const CategorySchema: Schema = new Schema({
+  // שם הקטגוריה חייב להיות ייחודי
   name: { type: String, required: true, unique: true },
   description: String,
 });
